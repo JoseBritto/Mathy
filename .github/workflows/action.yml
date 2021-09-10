@@ -1,24 +1,34 @@
-name: dotnet package
+name: .NET Core Build with Tests
 
-on: [push]
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
 
 jobs:
   build:
-
+    # use ubuntu for more build minutes
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        dotnet-version: ['5.0.x']
+    # use release mode for all steps
+    env:
+      config: 'Release'
 
     steps:
-      - uses: actions/checkout@v2
-      - name: Setup .NET Core SDK ${{ matrix.dotnet-version }}
-        uses: actions/setup-dotnet@v1.7.2
-        with:
-          dotnet-version: ${{ matrix.dotnet-version }}
-      - name: Install dependencies
-        run: dotnet restore
-      - name: Build
-        run: dotnet build --configuration Release --no-restore
-      - name: Test
-        run: dotnet test --no-restore --verbosity normal
+    - uses: actions/checkout@v2
+    - name: Unit Testing
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 3.1.101    
+
+      # restore dependencies  
+    - name: Install dependencies
+      run: dotnet restore
+
+      # build project
+    - name: Build
+      run: dotnet build --configuration $config --no-restore
+      
+    # Run Test
+    - name: Test
+      run: dotnet test --no-restore --no-build --configuration $config
