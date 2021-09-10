@@ -7,6 +7,7 @@ namespace Mathy.Tests
 {
     public class LineParserTests
     {
+
         [Theory]
         [InlineData("let x =9/ (-6969)+xtz32 *9")]
         [InlineData("let x=9/(-6969)+xtz32 *9")]
