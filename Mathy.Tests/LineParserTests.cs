@@ -20,6 +20,7 @@ namespace Mathy.Tests
             Assert.Equal<Token>(tokens, LineParser.Parse(input));
         }
 
+
         [Theory]
         [InlineData("8 + 9x")]
         [InlineData("8 + 9.3.2")]
