@@ -72,7 +72,21 @@ namespace Mathy.Parsers
                 {
                     if (numberCache.Length > 0) // This means that the identifier has started with a number. Like 12ab or 4521xyz
                     {
-                        throw new ParserException(numberCache.ToString() + input[i], 0);
+                        //So push the number cache into the tokens with a * at the end
+
+                        if (double.TryParse(numberCache.ToString(), out var num))                            
+                            tokens.Add(new Token
+                            {
+                                Type = TokenType.NUMBER,
+                                DoubleValue = num
+                            });
+                        else
+                            throw new ParserException(numberCache.ToString(), 0);
+
+                        tokens.Add(new Token
+                        {
+                            Type = TokenType.TIMES
+                        });
                     }
 
                     identifierCache.Append(input[i]);

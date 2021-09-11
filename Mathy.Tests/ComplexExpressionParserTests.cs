@@ -42,6 +42,32 @@ namespace Mathy.Tests
             Assert.Equal<Token>(tokens, ComplexExpressionParser.ParseExpression(input));
         }
 
+        [Fact]
+        public void NumberAndLetter_ShouldAutoAddMultiplyOperator()
+        {
+            string input = "59.25_hello";
+            var expected = new List<Token>
+            {
+                new Token
+                {
+                    Type = TokenType.NUMBER,
+                    DoubleValue = 59.25,
+                },
+                new Token
+                {
+                    Type = TokenType.TIMES,
+                },
+                new Token
+                {
+                    Type = TokenType.IDENTIFIER,
+                    StringValue = "_hello",
+                },
+            };
+
+            var actual = ComplexExpressionParser.ParseExpression(input);
+
+            Assert.Equal(expected, actual);
+        }
 
         private List<Token> getExpectedTokens()
         {
