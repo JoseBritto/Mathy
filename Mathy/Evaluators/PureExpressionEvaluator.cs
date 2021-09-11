@@ -55,7 +55,7 @@ namespace Mathy.Evaluators
             double answer = 0;
             int symbol = 1;
 
-            // This however means that +++++5 will be valid. ¯\_(ツ)_/¯
+            // This however means that +++-+-+5 will be valid. ¯\_(ツ)_/¯
             foreach (var token in tokens)
             {
                 if (token.Type == TokenType.PLUS)

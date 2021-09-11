@@ -65,6 +65,58 @@ namespace Mathy.Tests
 
             Assert.Equal(17, actual);
         }
+        [Fact]
+        public void PlusAndMinusInSeries_ShouldEvaluate()
+        {
+            var tokens = new List<Token>
+            {
+                new Token
+                {
+                    Type = TokenType.PLUS,
+                },
+                new Token
+                {
+                    Type = TokenType.PLUS,
+                },
+                new Token
+                {
+                    Type = TokenType.MINUS,
+                },
+                new Token
+                {
+                    Type = TokenType.PLUS,
+                },
+                new Token
+                {
+                    Type = TokenType.MINUS,
+                },
+                new Token
+                {
+                    Type = TokenType.PLUS,
+                },
+                new Token
+                {
+                    Type = TokenType.MINUS,
+                },
+                new Token
+                {
+                    Type = TokenType.PLUS,
+                },
+                new Token
+                {
+                    Type = TokenType.MINUS,
+                },
+                new Token
+                {
+                    Type = TokenType.NUMBER,
+                    DoubleValue = 5
+                }
+            };
+
+            var actual = PureExpressionEvaluator.Evaluate(tokens);
+
+            Assert.Equal(5, actual);
+        }
 
 
         private List<Token> getExpectedTokens()
@@ -119,5 +171,5 @@ namespace Mathy.Tests
             };
         }
 
-        }
+    }
 }
