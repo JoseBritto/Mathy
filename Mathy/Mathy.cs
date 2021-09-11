@@ -15,7 +15,7 @@ namespace Mathy
 
             var result = PureExpressionEvaluator.Evaluate(tokens);
 
-            return result.DoubleValue;            
+            return result;            
         }
     }
 

@@ -9,9 +9,9 @@ namespace Mathy.Tests
     {
 
         [Theory]
-        [InlineData("let x =9/ (-6969)+xtz32 *9")]
-        [InlineData("let x=9/(-6969)+xtz32 *9")]
-        [InlineData("let x = 9 /(-6969)+xtz32*9")]
+        [InlineData("let x =9/ (-6969)+xtz32* 9")]
+        [InlineData("let x=9/(-6969)+\txtz32 *9")]
+        [InlineData("let x    = 9 /(  -6969)+xtz32*9")]
         [InlineData("let x=9/(-6969)+xtz32*9")]
         public void ValidInput_ShouldParse(string input)
         {

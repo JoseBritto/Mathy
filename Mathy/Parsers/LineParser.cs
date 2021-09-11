@@ -13,7 +13,7 @@ namespace Mathy.Parsers
         {
             var tokens = new List<Token>();
             
-            string[] words = line.Split(new[] { ' ' } , StringSplitOptions.RemoveEmptyEntries);
+            string[] words = line.Split(new[] { ' ', '\t' } , StringSplitOptions.RemoveEmptyEntries);
 
             for (int i = 0; i < words.Length; i++)
             {                

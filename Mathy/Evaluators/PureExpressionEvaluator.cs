@@ -9,8 +9,9 @@ namespace Mathy.Evaluators
         private const int NOT_FOUND = -1;
 
         // This doesnt support variables
-        public static Token Evaluate(List<Token> tokens)
-        {
+        public static double Evaluate(List<Token> tokens)
+        {            
+
             //Remove all braces
             while (tryExtractInBraces(tokens, out int start, out int end))
             {
@@ -19,9 +20,15 @@ namespace Mathy.Evaluators
                 tokens.RemoveRange(start, end - start + 2); // Remove all things inside braces and the closing braces.
 
                 // Overwirte the the opening braces with the result
-                tokens[start - 1] = result;
+                tokens[start - 1] = new Token
+                {
+                    Type = TokenType.NUMBER,
+                    DoubleValue = result
+                };
             }
 
+
+            
             while (tryFindOperator(tokens, TokenType.BY, false, false, out int index))
             {
                 var op1 = tokens[index - 1];
@@ -43,50 +50,49 @@ namespace Mathy.Evaluators
                 overwriteOperation(tokens, index, result);
             }
 
-            // Now only + and - are left and both have the same presendence
+            // Now only + and -  operation is left.
 
-            int symbol = 1;
             double answer = 0;
+            int symbol = 1;
+
+            // This however means that +++++5 will be valid. ¯\_(ツ)_/¯
             foreach (var token in tokens)
             {
-                if(token.Type == TokenType.NUMBER)
+                if (token.Type == TokenType.PLUS)
                 {
-                    answer += token.DoubleValue * symbol;
-                    symbol = 1;
-                    continue;
+                    continue; // symbol * 1 = symbol                    
                 }
 
-                if(token.Type == TokenType.MINUS)
+                if (token.Type == TokenType.MINUS)
                 {
                     symbol *= -1;
-                    continue;
+                    continue;                     
                 }
 
-                if(token.Type == TokenType.PLUS)
+                if (token.Type != TokenType.NUMBER)
                 {
-                    continue; // symbol * 1 = symbol itself
+                    throw new UnexpectedTokenException(token);
                 }
+
+                answer += token.DoubleValue * symbol;
+                symbol = 1;
             }
 
-            // Check if the syntax was correct
+            // Check if the expression ended with a + or -
             if (tokens[tokens.Count - 1].Type != TokenType.NUMBER)
-                throw new UnExpectedTokenException(tokens[tokens.Count - 1]);
+                throw new UnexpectedTokenException(tokens[tokens.Count - 1]);
 
-            return new Token
-            {
-                Type = TokenType.NUMBER,
-                DoubleValue = answer
-            };
+            return answer;
 
         }
 
         private static double multiply(Token op1, Token op2)
         {
             if (op1.Type != TokenType.NUMBER)
-                throw new UnExpectedTokenException(op1);
+                throw new UnexpectedTokenException(op1);
 
             if (op2.Type != TokenType.NUMBER)
-                throw new UnExpectedTokenException(op1);
+                throw new UnexpectedTokenException(op1);
 
             double result;
             try
@@ -117,10 +123,10 @@ namespace Mathy.Evaluators
         private static double divide(Token op1, Token op2)
         {
             if (op1.Type != TokenType.NUMBER)
-                throw new UnExpectedTokenException(op1);
+                throw new UnexpectedTokenException(op1);
 
             if (op2.Type != TokenType.NUMBER)
-                throw new UnExpectedTokenException(op1);
+                throw new UnexpectedTokenException(op1);
 
             double result;
             try
@@ -146,10 +152,10 @@ namespace Mathy.Evaluators
                     index = i;
                     
                     if (!allowAtStart && i == 0)
-                        throw new UnExpectedTokenException(tokens[i]);
+                        throw new UnexpectedTokenException(tokens[i]);
                     if (!allowAtEnd && i == tokens.Count - 1)
-                        throw new UnExpectedTokenException(tokens[i]);
-
+                        throw new UnexpectedTokenException(tokens[i]);
+                    
                     break;
                 }
             }
@@ -178,7 +184,7 @@ namespace Mathy.Evaluators
                     {
                         // This means a closing braces was found before which is unaceptable
                         // Also we don't need to check if endIndex is out of range cuz there is no way that kind of value can end up here.
-                        throw new UnExpectedTokenException(tokens[endIndex]);
+                        throw new UnexpectedTokenException(tokens[endIndex]);
                     }
                     startIndex = i;
                     continue;
@@ -189,7 +195,7 @@ namespace Mathy.Evaluators
                     if (startIndex == NOT_FOUND)
                     {
                         // Means no opening braces encountered before.
-                        throw new UnExpectedTokenException(token);
+                        throw new UnexpectedTokenException(token);
                     }
                     endIndex = i;
                     break; // Since we found a pair we can exit out
@@ -204,13 +210,13 @@ namespace Mathy.Evaluators
             if (endIndex == NOT_FOUND || startIndex == NOT_FOUND)
             {
                 // Only one of them not found is invalid syntax
-                throw new UnExpectedTokenException(endIndex != NOT_FOUND ? tokens[endIndex] : tokens[startIndex]);
+                throw new UnexpectedTokenException(endIndex != NOT_FOUND ? tokens[endIndex] : tokens[startIndex]);
             }
 
             if (endIndex == startIndex + 1)
             {
                 // This means the input will be like this -> () Which is invalid
-                throw new UnExpectedTokenException(tokens[endIndex]); // cuz technically the closing braces is the one in the wrong place.
+                throw new UnexpectedTokenException(tokens[endIndex]); // cuz technically the closing braces is the one in the wrong place.
             }
 
             // No check for end <= start cuz its handled in the loop

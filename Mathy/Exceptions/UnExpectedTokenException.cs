@@ -4,9 +4,9 @@ using System.Text;
 
 namespace Mathy.Exceptions
 {
-    public class UnExpectedTokenException : Exception
+    public class UnexpectedTokenException : Exception
     {
-        public UnExpectedTokenException(Token token) 
+        public UnexpectedTokenException(Token token) 
             : base($"Unexpected {token.Type} in line {token.Line}")
         {
 
