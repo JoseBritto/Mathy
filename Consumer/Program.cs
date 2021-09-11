@@ -13,7 +13,7 @@ namespace Consumer
 
                 try
                 {
-                    var tokens = LineParser.Parse(expression);
+                    //var tokens = LineParser.Parse(expression);
 
                     /*foreach (var token in tokens)
                     {

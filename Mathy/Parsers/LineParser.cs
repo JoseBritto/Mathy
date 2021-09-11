@@ -6,7 +6,7 @@ using System.Text.RegularExpressions;
 
 namespace Mathy.Parsers
 {
-    public class LineParser
+    internal static class LineParser
     {
         // currently no functions like sin cos tan are supported
         public static List<Token> Parse(string line)

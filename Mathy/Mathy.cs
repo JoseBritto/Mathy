@@ -7,8 +7,7 @@ using System.Text;
 namespace Mathy
 {
     public class Mathy
-    {
-        
+    {        
         public static double Compute(string input)
         {
            var tokens =  LineParser.Parse(input);
