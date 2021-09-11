@@ -19,7 +19,7 @@ namespace Mathy.Tests
         [InlineData("123x+$$")]
         public void InvalidIdentifier_ShouldThrowException(string testInput)
         {
-            Assert.Throws<InvalidSyntaxException>(() => ComplexExpressionParser.ParseExpression(testInput));
+            Assert.Throws<ParserException>(() => ComplexExpressionParser.ParseExpression(testInput));
         }
 
         [Theory]
@@ -29,7 +29,7 @@ namespace Mathy.Tests
         [InlineData("001$")]
         public void InvalidNumber_ShouldThrowException(string testInput)
         {
-            Assert.Throws<InvalidSyntaxException>(() => ComplexExpressionParser.ParseExpression(testInput));
+            Assert.Throws<ParserException>(() => ComplexExpressionParser.ParseExpression(testInput));
         }
 
         [Fact]

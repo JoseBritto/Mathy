@@ -11,7 +11,7 @@ namespace Mathy.Parsers
         /// </summary>
         /// <param name="input">Input expression without spaces</param>
         /// <returns><see langword="true"/> if successful</returns>
-        /// <exception cref="InvalidSyntaxException"></exception>
+        /// <exception cref="ParserException"></exception>
         public static List<Token> ParseExpression(string input)
         {
             var tokens = new List<Token>();
@@ -38,7 +38,7 @@ namespace Mathy.Parsers
                                 DoubleValue = number
                             });
                         else
-                            throw new InvalidSyntaxException(numberCache.ToString(), 0);
+                            throw new ParserException(numberCache.ToString(), 0);
 
                         //We should not yet clear the number cache. It shoudl only be cleared if we hit a seperator
                         //If we cleared it now the identifiers starting witha number like 123xyz can't be identified.
@@ -72,7 +72,7 @@ namespace Mathy.Parsers
                 {
                     if (numberCache.Length > 0) // This means that the identifier has started with a number. Like 12ab or 4521xyz
                     {
-                        throw new InvalidSyntaxException(numberCache.ToString() + input[i], 0);
+                        throw new ParserException(numberCache.ToString() + input[i], 0);
                     }
 
                     identifierCache.Append(input[i]);
@@ -80,7 +80,7 @@ namespace Mathy.Parsers
                 }
 
                 // If code reaches here it means that someting must have went wrong.
-                throw new InvalidSyntaxException(input, 0);
+                throw new ParserException(input, 0);
             }
 
             
@@ -104,7 +104,7 @@ namespace Mathy.Parsers
                         DoubleValue = number
                     });
                 else
-                    throw new InvalidSyntaxException(numberCache.ToString(), 0);
+                    throw new ParserException(numberCache.ToString(), 0);
 
                 numberCache.Clear();
             }

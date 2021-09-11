@@ -12,7 +12,7 @@ namespace Mathy.Parsers
         public static List<Token> Parse(string line)
         {
             var tokens = new List<Token>();
-
+            
             string[] words = line.Split(new[] { ' ' } , StringSplitOptions.RemoveEmptyEntries);
 
             for (int i = 0; i < words.Length; i++)
@@ -50,7 +50,7 @@ namespace Mathy.Parsers
                 {
                     tokens.AddRange(ComplexExpressionParser.ParseExpression(words[i]));
                 }
-                catch (InvalidSyntaxException)
+                catch (ParserException)
                 {
                     throw;
                 }

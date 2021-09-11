@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Mathy.Evaluators;
+using Mathy.Parsers;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -6,18 +8,14 @@ namespace Mathy
 {
     public class Mathy
     {
-        private StringBuilder inputBuilder;
-
-        private Dictionary<string, double> localVars;
-
         
-        public void Compute(string s)
+        public static double Compute(string input)
         {
-            var tokens = new List<Token>();
+           var tokens =  LineParser.Parse(input);
 
-            List<char> chars = new List<char>();
-            
-            
+            var result = PureExpressionEvaluator.Evaluate(tokens);
+
+            return result.DoubleValue;            
         }
     }
 

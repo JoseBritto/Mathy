@@ -30,6 +30,7 @@ namespace Mathy
         CLOSING_BRACES,
 
         IDENTIFIER,
-        NUMBER
+        NUMBER,
+
     }
 }

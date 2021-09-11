@@ -30,7 +30,7 @@ namespace Mathy.Tests
         [InlineData("xyz.5")]
         public void InvalidInput_ShouldThrowException(string testInput)
         {
-            Assert.Throws<InvalidSyntaxException>(() => LineParser.Parse(testInput));
+            Assert.Throws<ParserException>(() => LineParser.Parse(testInput));
         }
 
 
