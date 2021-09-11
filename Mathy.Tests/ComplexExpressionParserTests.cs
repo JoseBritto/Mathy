@@ -33,23 +33,11 @@ namespace Mathy.Tests
         }
 
         [Fact]
-        public void ValidInput_ShouldParse1()
+        public void ValidInput_ShouldParse()
         {
             var tokens = getExpectedTokens();
 
-            var input = "9/(-6969)+xtz32*9";
-
-            Assert.Equal<Token>(tokens, ComplexExpressionParser.ParseExpression(input));
-        }
-
-        [Fact]
-        public void ValidInput_ShouldParse2()
-        {
-            var tokens = getExpectedTokens();
-
-            tokens.RemoveRange(8, 2);
-
-            var input = "9/(-6969)+xtz32";
+            var input = "9/(-6969)+xtz32*9^5.25";
 
             Assert.Equal<Token>(tokens, ComplexExpressionParser.ParseExpression(input));
         }
@@ -102,6 +90,15 @@ namespace Mathy.Tests
                 {
                     Type = TokenType.NUMBER,
                     DoubleValue = 9,
+                },
+                new Token
+                {
+                    Type = TokenType.RAISE_TO,
+                },
+                new Token
+                {
+                    Type = TokenType.NUMBER,
+                    DoubleValue = 5.25,
                 },
 
             };

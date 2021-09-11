@@ -84,6 +84,13 @@ namespace Mathy.Parsers
                     };
                     return true;
 
+                case '^':
+                    token = new Token
+                    {
+                        Type = TokenType.RAISE_TO
+                    };
+                    return true;
+
                 default:
                     token = default;
                     return false;

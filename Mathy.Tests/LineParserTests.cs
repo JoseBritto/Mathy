@@ -9,10 +9,10 @@ namespace Mathy.Tests
     {
 
         [Theory]
-        [InlineData("x =9/ (-6969)+xtz32* 9")]
-        [InlineData("x=9/(-6969)+\txtz32 *9")]
-        [InlineData("x    = 9 /(  -6969)+xtz32*9")]
-        [InlineData("x=9/(-6969)+xtz32*9")]
+        [InlineData("x =9/ (-6969)+xtz32* 9^10.2   ^   5")]
+        [InlineData("x=9/(-6969)+\txtz32 *9^10.2  ^5  ")]
+        [InlineData("x    = 9 /(  -6969)+xtz32*9^ 10.2^ 5")]
+        [InlineData("x=9/(-6969)+xtz32*9^10.2^5")]
         public void ValidInput_ShouldParse(string input)
         {
             var tokens = getExpectedTokens();
@@ -90,6 +90,28 @@ namespace Mathy.Tests
                 {
                     Type = TokenType.NUMBER,
                     DoubleValue = 9,
+                },
+                
+                new Token
+                {
+                    Type = TokenType.RAISE_TO,
+                },
+                
+                new Token
+                {
+                    Type = TokenType.NUMBER,
+                    DoubleValue = 10.2,
+                },
+                
+                new Token
+                {
+                    Type = TokenType.RAISE_TO,
+                },
+                
+                new Token
+                {
+                    Type = TokenType.NUMBER,
+                    DoubleValue = 5,
                 },
 
             };

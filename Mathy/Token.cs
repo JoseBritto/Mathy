@@ -24,6 +24,7 @@ namespace Mathy
         MINUS,
         TIMES,
         BY,
+        RAISE_TO,
 
         OPENING_BRACES,
         CLOSING_BRACES,

@@ -27,8 +27,17 @@ namespace Mathy.Evaluators
                 };
             }
 
+            while (tryFindOperator(tokens, TokenType.RAISE_TO, false, false, out int index))
+            {
+                var op1 = tokens[index - 1];
+                var op2 = tokens[index + 1];
 
-            
+                double result = pow(op1, op2);
+
+                overwriteOperation(tokens, index, result);
+
+            }
+
             while (tryFindOperator(tokens, TokenType.BY, false, false, out int index))
             {
                 var op1 = tokens[index - 1];
@@ -84,6 +93,26 @@ namespace Mathy.Evaluators
 
             return answer;
 
+        }
+
+        private static double pow(Token op1, Token op2)
+        {
+            if (op1.Type != TokenType.NUMBER)
+                throw new UnexpectedTokenException(op1);
+
+            if (op1.Type != TokenType.NUMBER)
+                throw new UnexpectedTokenException(op2);
+            try
+            {
+                double result = Math.Pow(op1.DoubleValue, op2.DoubleValue);
+
+                return result;
+            }
+            catch (Exception e)
+            {
+
+                throw new MathException(e, op1.Line);
+            }
         }
 
         private static double multiply(Token op1, Token op2)
