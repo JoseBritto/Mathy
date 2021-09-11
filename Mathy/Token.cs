@@ -18,7 +18,6 @@ namespace Mathy
 
     public enum TokenType
     {
-        LET,
 
         EQUALS,
         PLUS,

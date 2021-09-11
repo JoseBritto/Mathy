@@ -93,7 +93,13 @@ namespace Mathy.Parsers
 
         public static bool TryGetAsKeywordToken(this string input, out Token token)
         {
-            switch (input)
+
+            //There are no keywords!
+
+            token = default;
+            return false;
+
+            /*switch (input)
             {
                 case "let":
                     token = new Token
@@ -105,7 +111,7 @@ namespace Mathy.Parsers
             }
 
             token = default;
-            return false;
+            return false;*/
         }
 
         private static Regex validIdentifier = new Regex(@"[_a-zA-Z][_a-zA-Z0-9]");
