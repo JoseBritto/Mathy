@@ -8,12 +8,8 @@ namespace Mathy.Tests
     public class ComplexExpressionParserTests
     {
         [Theory]
-        [InlineData("123xa")]
         [InlineData("..3")]
         [InlineData("has$")]
-        [InlineData("1xr")]
-        [InlineData("123x++")]
-        [InlineData("123+9+2x*9")]
         [InlineData("123+9+$$*9")]
         [InlineData("123+9+$$")]
         [InlineData("123x+$$")]

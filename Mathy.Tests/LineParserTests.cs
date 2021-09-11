@@ -22,9 +22,8 @@ namespace Mathy.Tests
 
 
         [Theory]
-        [InlineData("8 + 9x")]
+        [InlineData("8 + '9'")]
         [InlineData("8 + 9.3.2")]
-        [InlineData("1+ 2k")]
         [InlineData("abcd+haswrong$ymbol")]
         [InlineData("abcd+ haswrong$ymbol with space")]
         [InlineData("xyz.5")]
