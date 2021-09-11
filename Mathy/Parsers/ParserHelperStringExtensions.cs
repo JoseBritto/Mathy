@@ -56,6 +56,7 @@ namespace Mathy.Parsers
                     return true;
 
                 case '/':
+                case '÷':
                     token = new Token
                     {
                         Type = TokenType.BY
