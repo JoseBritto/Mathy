@@ -91,6 +91,7 @@ namespace Mathy.Parsers
             }
         }
 
+        [Obsolete]
         public static bool TryGetAsKeywordToken(this string input, out Token token)
         {
 

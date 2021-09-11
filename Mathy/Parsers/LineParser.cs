@@ -17,13 +17,8 @@ namespace Mathy.Parsers
 
             for (int i = 0; i < words.Length; i++)
             {                
-                if(words[i].TryGetAsKeywordToken( out var token))
-                {
-                    tokens.Add(token);
-                    continue;
-                }
-
-                if (words[i].TryGetAsOperatorToken(out token))
+                
+                if (words[i].TryGetAsOperatorToken(out var token))
                 {
                     tokens.Add(token);
                     continue;
