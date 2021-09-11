@@ -40,7 +40,7 @@ namespace Mathy.Parsers
                         else
                             throw new ParserException(numberCache.ToString(), 0);
 
-                        //We should not yet clear the number cache. It shoudl only be cleared if we hit a seperator
+                        //We should not yet clear the number cache. It should only be cleared if we hit a seperator
                         //If we cleared it now the identifiers starting witha number like 123xyz can't be identified.
                     }
                 }
