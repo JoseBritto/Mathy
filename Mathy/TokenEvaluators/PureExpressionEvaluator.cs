@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Mathy.Evaluators
+namespace Mathy.TokenEvaluators
 {
     internal static class PureExpressionEvaluator
     {
