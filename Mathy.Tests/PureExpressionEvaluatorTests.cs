@@ -21,7 +21,7 @@ namespace Mathy.Tests
                 },
                 new Token
                 {
-                    Type = TokenType.BY
+                    Type = TokenType.DIVIDE
                 },
                 new Token
                 {
@@ -130,7 +130,7 @@ namespace Mathy.Tests
                 },
                 new Token
                 {
-                    Type = TokenType.BY,
+                    Type = TokenType.DIVIDE,
                 },
                 new Token
                 {
@@ -160,7 +160,7 @@ namespace Mathy.Tests
                 },
                 new Token
                 {
-                    Type = TokenType.TIMES
+                    Type = TokenType.MULTIPLY
                 },
                 new Token
                 {

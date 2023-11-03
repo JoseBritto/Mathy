@@ -51,7 +51,7 @@ namespace Mathy.Parsers
                 case '*':
                     token = new Token
                     {
-                        Type = TokenType.TIMES
+                        Type = TokenType.MULTIPLY
                     };
                     return true;
 
@@ -59,7 +59,7 @@ namespace Mathy.Parsers
                 case '÷':
                     token = new Token
                     {
-                        Type = TokenType.BY
+                        Type = TokenType.DIVIDE
                     };
                     return true;
 

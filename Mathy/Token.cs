@@ -18,12 +18,11 @@ namespace Mathy
 
     public enum TokenType
     {
-
         EQUALS,
         PLUS,
         MINUS,
-        TIMES,
-        BY,
+        MULTIPLY,
+        DIVIDE,
         RAISE_TO,
 
         OPENING_BRACES,
@@ -31,6 +30,5 @@ namespace Mathy
 
         IDENTIFIER,
         NUMBER,
-
     }
 }

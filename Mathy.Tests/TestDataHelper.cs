@@ -18,7 +18,7 @@ public  static class TestDataHelper
                 },
                 new Token
                 {
-                    Type = TokenType.BY,
+                    Type = TokenType.DIVIDE,
                 },
                 new Token
                 {
@@ -48,7 +48,7 @@ public  static class TestDataHelper
                 },
                 new Token
                 {
-                    Type = TokenType.TIMES,
+                    Type = TokenType.MULTIPLY,
                 },
                 new Token
                 {
@@ -78,7 +78,7 @@ public  static class TestDataHelper
                 },
                 new Token
                 {
-                    Type = TokenType.TIMES,
+                    Type = TokenType.MULTIPLY,
                 },
                 new Token
                 {
@@ -100,7 +100,7 @@ public  static class TestDataHelper
                 },
                 new Token
                 {
-                    Type = TokenType.TIMES,
+                    Type = TokenType.MULTIPLY,
                 },
                 new Token
                 {
@@ -109,7 +109,7 @@ public  static class TestDataHelper
                 },
                 new Token
                 {
-                    Type = TokenType.BY,
+                    Type = TokenType.DIVIDE,
                 },
                 new Token
                 {
@@ -118,7 +118,7 @@ public  static class TestDataHelper
                 },
                 new Token
                 {
-                    Type = TokenType.TIMES,
+                    Type = TokenType.MULTIPLY,
                 },
                 new Token
                 {

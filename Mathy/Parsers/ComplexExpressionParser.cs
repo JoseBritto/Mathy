@@ -75,7 +75,7 @@ namespace Mathy.Parsers
                         //So push a * to the tokens
                         tokens.Add(new Token
                         {
-                            Type = TokenType.TIMES
+                            Type = TokenType.MULTIPLY
                         });
 
                         numberCache.Clear();

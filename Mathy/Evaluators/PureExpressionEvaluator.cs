@@ -38,7 +38,7 @@ namespace Mathy.Evaluators
 
             }
 
-            while (tryFindOperator(tokens, TokenType.BY, false, false, out int index))
+            while (tryFindOperator(tokens, TokenType.DIVIDE, false, false, out int index))
             {
                 var op1 = tokens[index - 1];
                 var op2 = tokens[index + 1];
@@ -49,7 +49,7 @@ namespace Mathy.Evaluators
 
             }
 
-            while (tryFindOperator(tokens, TokenType.TIMES, false, false, out int index))
+            while (tryFindOperator(tokens, TokenType.MULTIPLY, false, false, out int index))
             {
                 var op1 = tokens[index - 1];
                 var op2 = tokens[index + 1];
