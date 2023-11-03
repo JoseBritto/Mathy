@@ -14,7 +14,7 @@ namespace Mathy
         {
             var tokens = LineParser.Parse(input);
 
-            var result = PureExpressionEvaluator.Evaluate(tokens,maxDecimals);
+            var result = PureExpressionTokenEvaluator.Evaluate(tokens,maxDecimals);
 
             return result;
         }

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Mathy.TokenEvaluators
 {
-    internal static class PureExpressionEvaluator
+    internal static class PureExpressionTokenEvaluator
     {
         private const int NOT_FOUND = -1;
 

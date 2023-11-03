@@ -31,7 +31,7 @@ namespace Mathy.Tests
                 }
             };
 
-            var actual = PureExpressionEvaluator.Evaluate(tokens, 10);
+            var actual = PureExpressionTokenEvaluator.Evaluate(tokens, 10);
 
             Assert.Equal(double.PositiveInfinity, actual);
 
@@ -53,7 +53,7 @@ namespace Mathy.Tests
                 }
             };
 
-            Assert.Throws<UnexpectedTokenException>(() => PureExpressionEvaluator.Evaluate(tokens ,10));
+            Assert.Throws<UnexpectedTokenException>(() => PureExpressionTokenEvaluator.Evaluate(tokens ,10));
         }
 
 
@@ -61,7 +61,7 @@ namespace Mathy.Tests
         [MemberData(nameof(TestDataHelper.GetValidSampleDataForEvaluation), MemberType = typeof(TestDataHelper))]
         public void ValidOperation_ShouldCompute(List<Token> tokens, double expected)
         {
-            var actual = PureExpressionEvaluator.Evaluate(tokens, 10);
+            var actual = PureExpressionTokenEvaluator.Evaluate(tokens, 10);
             Assert.Equal(expected, actual);
         }
         [Fact]
@@ -112,7 +112,7 @@ namespace Mathy.Tests
                 }
             };
 
-            var actual = PureExpressionEvaluator.Evaluate(tokens, 10);
+            var actual = PureExpressionTokenEvaluator.Evaluate(tokens, 10);
 
             Assert.Equal(5, actual);
         }
