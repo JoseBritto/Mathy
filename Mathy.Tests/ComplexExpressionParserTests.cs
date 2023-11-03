@@ -28,14 +28,11 @@ namespace Mathy.Tests
             Assert.Throws<ParserException>(() => ComplexExpressionParser.ParseExpression(testInput));
         }
 
-        [Fact]
-        public void ValidInput_ShouldParse()
+        [Theory]
+        [MemberData(nameof(TestDataHelper.GetValidSampleData), MemberType = typeof(TestDataHelper))]
+        public void ValidInput_ShouldParse(string input,  List<Token> expectedTokens)
         {
-            var tokens = getExpectedTokens();
-
-            var input = "9/(-6969)+xtz32*9^5.25";
-
-            Assert.Equal<Token>(tokens, ComplexExpressionParser.ParseExpression(input));
+            Assert.Equal<Token>(expectedTokens, ComplexExpressionParser.ParseExpression(input));
         }
 
         [Fact]
