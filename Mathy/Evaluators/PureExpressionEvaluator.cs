@@ -11,7 +11,6 @@ namespace Mathy.Evaluators
         // This doesnt support variables
         public static double Evaluate(List<Token> tokens, int maxDecimals)
         {            
-
             //Remove all braces
             while (tryExtractInBraces(tokens, out int start, out int end))
             {

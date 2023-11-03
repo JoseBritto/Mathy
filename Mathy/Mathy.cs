@@ -6,7 +6,7 @@ namespace Mathy
     public class Mathy
     {
         /// <summary>
-        /// Compute simple expression wiithout the use of any variables.
+        /// Compute simple expression without the use of any variables.
         /// </summary>
         /// <param name="input">The input</param>
         /// <returns></returns>
