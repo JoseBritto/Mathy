@@ -4,7 +4,7 @@ namespace Mathy.Tests;
 
 public  static class TestDataHelper
 {
-    public static IEnumerable<object[]> GetValidSampleData()
+    public static IEnumerable<object[]> GetValidSampleDataForParsing()
     {
         yield return new object[]
         {
@@ -155,5 +155,112 @@ public  static class TestDataHelper
             }
         };
     }
-    
+
+    public static IEnumerable<object[]> GetValidSampleDataForEvaluation()
+    {
+        //17+45*2-9/3
+        yield return new object[]
+        { 
+            new List<Token>()
+            {
+                new Token
+                {
+                    Type = TokenType.NUMBER,
+                    DoubleValue = 17,
+                },
+                new Token
+                {
+                    Type = TokenType.PLUS,
+                },
+                new Token
+                {
+                    Type = TokenType.NUMBER,
+                    DoubleValue = 45,
+                },
+                new Token
+                {
+                    Type = TokenType.MULTIPLY,
+                },
+                new Token
+                {
+                    Type = TokenType.NUMBER,
+                    DoubleValue = 2,
+                },
+                new Token
+                {
+                    Type = TokenType.MINUS,
+                },
+                new Token
+                {
+                    Type = TokenType.NUMBER,
+                    DoubleValue = 9,
+                },
+                new Token
+                {
+                    Type = TokenType.DIVIDE,
+                },
+                new Token
+                {
+                    Type = TokenType.NUMBER,
+                    DoubleValue = 3,
+                },
+            },
+            104
+        };
+        
+        //9/(-6969)*9^5.25
+        yield return new object[]
+        {
+            new List<Token>()
+            {
+                new Token
+                {
+                    Type = TokenType.NUMBER,
+                    DoubleValue = 9,
+                },
+                new Token
+                {
+                    Type = TokenType.DIVIDE,
+                },
+                new Token
+                {
+                    Type = TokenType.OPENING_BRACES,
+                },
+                new Token
+                {
+                    Type = TokenType.MINUS,
+                },
+                new Token
+                {
+                    Type = TokenType.NUMBER,
+                    DoubleValue = 6969,
+                },
+                new Token
+                {
+                    Type = TokenType.CLOSING_BRACES,
+                },
+                new Token
+                {
+                    Type = TokenType.MULTIPLY,
+                },
+                new Token
+                {
+                    Type = TokenType.NUMBER,
+                    DoubleValue = 9,
+                },
+                new Token
+                {
+                    Type = TokenType.RAISE_TO,
+                },
+                new Token
+                {
+                    Type = TokenType.NUMBER,
+                    DoubleValue = 5.25,
+                }
+
+            },
+            132.0824814500 * -1
+        };
+    }
 }
+    

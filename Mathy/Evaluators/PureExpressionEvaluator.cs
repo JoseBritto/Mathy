@@ -9,13 +9,13 @@ namespace Mathy.Evaluators
         private const int NOT_FOUND = -1;
 
         // This doesnt support variables
-        public static double Evaluate(List<Token> tokens)
+        public static double Evaluate(List<Token> tokens, int maxDecimals)
         {            
 
             //Remove all braces
             while (tryExtractInBraces(tokens, out int start, out int end))
             {
-                var result = Evaluate(tokens.GetRange(start, end - start + 1));
+                var result = Evaluate(tokens.GetRange(start, end - start + 1), maxDecimals);
 
                 tokens.RemoveRange(start, end - start + 2); // Remove all things inside braces and the closing braces.
 
@@ -91,7 +91,7 @@ namespace Mathy.Evaluators
             if (tokens[tokens.Count - 1].Type != TokenType.NUMBER)
                 throw new UnexpectedTokenException(tokens[tokens.Count - 1]);
 
-            return answer;
+            return Math.Round(answer, maxDecimals);
 
         }
 

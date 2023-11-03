@@ -3,6 +3,7 @@ using Mathy.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Mathy.Parsers;
 using Xunit;
 
 namespace Mathy.Tests
@@ -30,7 +31,7 @@ namespace Mathy.Tests
                 }
             };
 
-            var actual = PureExpressionEvaluator.Evaluate(tokens);
+            var actual = PureExpressionEvaluator.Evaluate(tokens, 10);
 
             Assert.Equal(double.PositiveInfinity, actual);
 
@@ -52,18 +53,16 @@ namespace Mathy.Tests
                 }
             };
 
-            Assert.Throws<UnexpectedTokenException>(() => PureExpressionEvaluator.Evaluate(tokens));
+            Assert.Throws<UnexpectedTokenException>(() => PureExpressionEvaluator.Evaluate(tokens ,10));
         }
 
 
-        [Fact]
-        public void ValidOperation_ShouldCompute()
+        [Theory]
+        [MemberData(nameof(TestDataHelper.GetValidSampleDataForEvaluation), MemberType = typeof(TestDataHelper))]
+        public void ValidOperation_ShouldCompute(List<Token> tokens, double expected)
         {
-            var tokens = getExpectedTokens();
-
-            var actual = PureExpressionEvaluator.Evaluate(tokens);
-
-            Assert.Equal(17, actual);
+            var actual = PureExpressionEvaluator.Evaluate(tokens, 10);
+            Assert.Equal(expected, actual);
         }
         [Fact]
         public void PlusAndMinusInSeries_ShouldEvaluate()
@@ -113,7 +112,7 @@ namespace Mathy.Tests
                 }
             };
 
-            var actual = PureExpressionEvaluator.Evaluate(tokens);
+            var actual = PureExpressionEvaluator.Evaluate(tokens, 10);
 
             Assert.Equal(5, actual);
         }

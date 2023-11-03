@@ -29,7 +29,7 @@ namespace Mathy.Tests
         }
 
         [Theory]
-        [MemberData(nameof(TestDataHelper.GetValidSampleData), MemberType = typeof(TestDataHelper))]
+        [MemberData(nameof(TestDataHelper.GetValidSampleDataForParsing), MemberType = typeof(TestDataHelper))]
         public void ValidInput_ShouldParse(string input,  List<Token> expectedTokens)
         {
             Assert.Equal<Token>(expectedTokens, ComplexExpressionParser.ParseExpression(input));
