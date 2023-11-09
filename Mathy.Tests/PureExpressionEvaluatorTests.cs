@@ -116,59 +116,5 @@ namespace Mathy.Tests
 
             Assert.Equal(5, actual);
         }
-
-
-        private List<Token> getExpectedTokens()
-        {
-            return new List<Token>
-            {
-                new Token
-                {
-                    Type = TokenType.NUMBER,
-                    DoubleValue = 9
-                },
-                new Token
-                {
-                    Type = TokenType.DIVIDE,
-                },
-                new Token
-                {
-                    Type = TokenType.OPENING_BRACES,
-                },
-                new Token
-                {
-                    Type = TokenType.MINUS,
-                },
-                new Token
-                {
-                    Type = TokenType.NUMBER,
-                    DoubleValue = 9
-                },
-                new Token
-                {
-                    Type = TokenType.CLOSING_BRACES,
-                },
-                new Token
-                {
-                    Type = TokenType.PLUS,
-                },
-                new Token
-                {
-                    Type = TokenType.NUMBER,
-                    DoubleValue = 2,
-                },
-                new Token
-                {
-                    Type = TokenType.MULTIPLY
-                },
-                new Token
-                {
-                    Type = TokenType.NUMBER,
-                    DoubleValue = 9,
-                },
-
-            };
-        }
-
     }
 }

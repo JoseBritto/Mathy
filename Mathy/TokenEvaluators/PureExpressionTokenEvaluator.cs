@@ -24,6 +24,25 @@ namespace Mathy.TokenEvaluators
                     Type = TokenType.NUMBER,
                     DoubleValue = result
                 };
+                var insertedAt = start - 1;
+                
+                if (insertedAt > 0 && (tokens[insertedAt - 1].Type == TokenType.NUMBER ||
+                      tokens[insertedAt - 1].Type == TokenType.IDENTIFIER))
+                {
+                    tokens.Insert(start - 1, new Token
+                    {
+                        Type = TokenType.MULTIPLY
+                    });
+                    insertedAt++; // the value we inserted moved by one position because of this insertion of  *
+                }
+                if(insertedAt < tokens.Count - 1 && (tokens[insertedAt + 1].Type == TokenType.NUMBER ||
+                      tokens[insertedAt + 1].Type == TokenType.IDENTIFIER))
+                {
+                    tokens.Insert(start, new Token
+                    {
+                        Type = TokenType.MULTIPLY
+                    });
+                }
             }
 
             while (tryFindOperator(tokens, TokenType.RAISE_TO, false, false, out int index))

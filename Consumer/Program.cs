@@ -1,5 +1,6 @@
 ﻿using Mathy.Parsers;
 using System;
+using Mathy.Evaluators;
 
 namespace Consumer
 {
@@ -10,7 +11,7 @@ namespace Consumer
             while (true)
             {
                 var expression = Console.ReadLine();
-
+                var evaluator = new SimpleExpressionEvaluator();
                 try
                 {
                     //var tokens = LineParser.Parse(expression);
@@ -29,7 +30,7 @@ namespace Consumer
 
                 try
                 {
-                    var result = Mathy.Mathy.Compute(expression);
+                    var result = evaluator.Evaluate(expression);
 
                     Console.WriteLine(result);
                 }

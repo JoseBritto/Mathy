@@ -12,7 +12,7 @@ namespace Mathy
         /// <returns></returns>
         public static double Compute(string input, int maxDecimals = 2)
         {
-            var tokens = LineParser.Parse(input);
+            var tokens = ComplexExpressionParser.Parse(input);
 
             var result = PureExpressionTokenEvaluator.Evaluate(tokens,maxDecimals);
 

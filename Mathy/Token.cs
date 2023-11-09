@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Text;
 
 namespace Mathy
@@ -12,6 +13,16 @@ namespace Mathy
         public string StringValue;
 
         public int Line;
+
+        public override string ToString()
+        {
+            if (Type == TokenType.IDENTIFIER)
+                return Type + " " + StringValue;
+            else if (Type == TokenType.NUMBER)
+                return Type + " " + DoubleValue;
+            else
+                return Type + "";
+        }
     }
 
     
